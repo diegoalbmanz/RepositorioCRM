@@ -47,4 +47,6 @@ public class Empleado {
 
     public double getMontoVentas() { return montoVentas; }
     public void setMontoVentas(double montoVentas) { this.montoVentas = montoVentas; }
+
+  
 }

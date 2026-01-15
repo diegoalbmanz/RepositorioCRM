@@ -8,8 +8,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
+import model.EmpleadoModel;
+import pojos.Empleado;
 // o FlatDarkLaf
 
 /**
@@ -19,32 +22,39 @@ import javax.swing.border.LineBorder;
 public class InicioSesion extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InicioSesion.class.getName());
-
+    
+    private final EmpleadoModel empleadoModel = new model.EmpleadoModel();
+    
     /**
      * Creates new form InicioSesion
      */
     public InicioSesion() {
         initComponents();
 
-         setTitle("CRM Music Shop - Inicio de Sesión");
+        //Título
+        setTitle("CRM Music Shop - Inicio de Sesión");
 
-    // Icono de la ventana
+        //Tamaño, redimensionamiento y centrado
+        setSize(900, 600);  
+        setResizable(false);  
+        setLocationRelativeTo(null); 
+
+        //Icono de la ventana
         Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
         setIconImage(icon);
-        
-        txtUsuario.setBackground(Color.WHITE);                // fondo blanco
-        txtUsuario.putClientProperty("JComponent.roundRect", true);            // esquinas redondeadas
+
+        //Estilos de los campos
+        txtUsuario.setBackground(Color.WHITE);
+        txtUsuario.putClientProperty("JComponent.roundRect", true);
         txtUsuario.putClientProperty("JComponent.borderColor", Color.LIGHT_GRAY);
-                txtUsuario.putClientProperty("JComponent.focusedBorderColor", Color.BLACK); // borde negro al enfocar
+        txtUsuario.putClientProperty("JComponent.focusedBorderColor", Color.BLACK);
 
-        txtPass.setBackground(Color.WHITE);                // fondo blanco
-        txtPass.putClientProperty("JComponent.roundRect", true);            // esquinas redondeadas
+        txtPass.setBackground(Color.WHITE);
+        txtPass.putClientProperty("JComponent.roundRect", true);
         txtPass.putClientProperty("JComponent.borderColor", Color.LIGHT_GRAY);
-        txtPass.putClientProperty("JComponent.focusedBorderColor", Color.BLACK); // borde negro al enfocar
-
-                   
-                
+        txtPass.putClientProperty("JComponent.focusedBorderColor", Color.BLACK);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +71,7 @@ public class InicioSesion extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtPass = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -88,12 +98,12 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Contraseña");
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Iniciar Sesion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnInicio.setBackground(new java.awt.Color(0, 0, 0));
+        btnInicio.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio.setText("Iniciar Sesion");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnInicioActionPerformed(evt);
             }
         });
 
@@ -124,12 +134,10 @@ public class InicioSesion extends javax.swing.JFrame {
                                         .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel5)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(88, 88, 88)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(65, 65, 65))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel6)
@@ -153,7 +161,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(44, 44, 44)
@@ -165,12 +173,42 @@ public class InicioSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    //Método del botón Inicio Sesión, que nos permite acceder al sistema
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        //Obtener datos del formulario
+        String usuario = txtUsuario.getText().trim();
+        String contrasenia = txtPass.getText().trim();
+        
+        //Validar campos vacíos
+        if (usuario.isEmpty()) { 
+            JOptionPane.showMessageDialog(this, "Introduce el usuario", "Error", JOptionPane.ERROR_MESSAGE); 
+            return; 
+        } 
+        if (contrasenia.isEmpty()) { 
+            JOptionPane.showMessageDialog(this, "Introduce la contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+        
+        //Validamos contra EmpleadoModel
+        Empleado empleado = empleadoModel.buscarEmpleado(usuario, contrasenia);
+        
+        //Informamos en el caso de no existir el empleado
+        if(empleado == null){
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Acceso denegado", javax.swing.JOptionPane.ERROR_MESSAGE); 
+            txtUsuario.setText("");
+            txtPass.setText(""); 
+            return;
+        }
+        
+        //Si existe y los datos son correctos, pasamos a la siguiente página
+        JOptionPane.showMessageDialog(this, "Bienvenido " + empleado.getNombre());
+        
+        Bienvenida bienvenida = new Bienvenida(empleado);
+        bienvenida.setVisible(true);
+        dispose();
         
         
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,7 +249,7 @@ public class InicioSesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
