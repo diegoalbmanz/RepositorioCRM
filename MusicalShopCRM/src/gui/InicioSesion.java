@@ -190,7 +190,7 @@ public class InicioSesion extends javax.swing.JFrame {
         }
         
         //Validamos contra EmpleadoModel
-        Empleado empleado = empleadoModel.buscarEmpleado(usuario, contrasenia);
+        Empleado empleado = empleadoModel.autenticar(usuario, contrasenia);
         
         //Informamos en el caso de no existir el empleado
         if(empleado == null){

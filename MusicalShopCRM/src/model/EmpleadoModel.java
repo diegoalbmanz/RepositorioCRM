@@ -5,49 +5,40 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 import pojos.Empleado;
 
-/**
- * Clase que gestiona los empleados del sistema.
- * Actúa como "capa de datos" para el CRM.
- */
 public class EmpleadoModel {
+    private static EmpleadoModel instance;
+    private List<Empleado> empleados;
 
-    // Lista de empleados (simula una base de datos)
-    private final ArrayList<Empleado> empleados;
-
-    // Constructor: inicializa la lista con datos de ejemplo
     public EmpleadoModel() {
         empleados = new ArrayList<>();
+        // Datos iniciales
+        empleados.add(new Empleado(1, "ana",   "1234", "Ana López",        1200));
+        empleados.add(new Empleado(2, "juan",  "1234", "Juan Pérez",      1800));
+        empleados.add(new Empleado(3, "maria", "1234", "María García",    1500));
+        empleados.add(new Empleado(4, "carlos","1234", "Carlos Sánchez",  2200));
+        empleados.add(new Empleado(5, "laura", "1234", "Laura Martín",    1700));
+        empleados.add(new Empleado(6, "pedro", "1234", "Pedro Gómez",     2000));
+        empleados.add(new Empleado(7, "lucia", "1234", "Lucía Fernández", 1300));
+        empleados.add(new Empleado(8, "david", "1234", "David Ruiz",      3000));
 
-        empleados.add(new Empleado(1, "juan", "1234", "Juan Pérez", 1500.0));
-        empleados.add(new Empleado(2, "ana", "1234", "Ana López", 2300.0));
-        empleados.add(new Empleado(3, "mario", "1234", "Mario Ruiz", 900.0));
-        empleados.add(new Empleado(4, "laura", "1234", "Laura Gómez", 1800.0));
-        empleados.add(new Empleado(5, "carlos", "1234", "Carlos Sánchez", 2100.0));
-        empleados.add(new Empleado(6, "sofia", "1234", "Sofía Martín", 1200.0));
-        empleados.add(new Empleado(7, "diego", "1234", "Diego Torres", 3000.0));
-        empleados.add(new Empleado(8, "lucia", "1234", "Lucía Fernández", 2700.0));
     }
 
-    /**
-     * Busca un empleado por usuario y contraseña.
-     */
-    public Empleado buscarEmpleado(String usuario, String password) {
+    public static EmpleadoModel getInstance() {
+        if (instance == null) instance = new EmpleadoModel();
+        return instance;
+    }
+
+    public Empleado autenticar(String user, String pass) {
         for (Empleado e : empleados) {
-            if (e.getUsuario().equalsIgnoreCase(usuario) &&
-                e.getPassword().equals(password)) {
-                return e;
+            if (e.getUsuario().equals(user) && e.getPassword().equals(pass)) {
+                return e; // Retorna el empleado que inició sesión
             }
         }
         return null;
     }
 
-    /**
-     * Devuelve todos los empleados.
-     */
-    public ArrayList<Empleado> getTodos() {
-        return empleados;
-    }
+    public List<Empleado> getTodos() { return empleados; }
 }
-
