@@ -49,10 +49,10 @@ public class InicioSesion extends javax.swing.JFrame {
         txtUsuario.putClientProperty("JComponent.borderColor", Color.LIGHT_GRAY);
         txtUsuario.putClientProperty("JComponent.focusedBorderColor", Color.BLACK);
 
-        txtPass.setBackground(Color.WHITE);
-        txtPass.putClientProperty("JComponent.roundRect", true);
-        txtPass.putClientProperty("JComponent.borderColor", Color.LIGHT_GRAY);
-        txtPass.putClientProperty("JComponent.focusedBorderColor", Color.BLACK);
+        pwdPass.setBackground(Color.WHITE);
+        pwdPass.putClientProperty("JComponent.roundRect", true);
+        pwdPass.putClientProperty("JComponent.borderColor", Color.LIGHT_GRAY);
+        pwdPass.putClientProperty("JComponent.focusedBorderColor", Color.BLACK);
     }
 
 
@@ -69,12 +69,12 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtPass = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnInicio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        pwdPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(400, 400));
@@ -114,6 +114,8 @@ public class InicioSesion extends javax.swing.JFrame {
 
         jLabel6.setText("-------------------  OR  --------------------");
 
+        pwdPass.setText("jPasswordField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,12 +131,12 @@ public class InicioSesion extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel4)
-                                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                                         .addComponent(jLabel5)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(pwdPass))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(88, 88, 88)
                                         .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -158,9 +160,9 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pwdPass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jLabel6)
@@ -177,7 +179,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         //Obtener datos del formulario
         String usuario = txtUsuario.getText().trim();
-        String contrasenia = txtPass.getText().trim();
+        String contrasenia = new String(pwdPass.getPassword()).trim();
         
         //Validar campos vacíos
         if (usuario.isEmpty()) { 
@@ -196,14 +198,14 @@ public class InicioSesion extends javax.swing.JFrame {
         if(empleado == null){
             javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Acceso denegado", javax.swing.JOptionPane.ERROR_MESSAGE); 
             txtUsuario.setText("");
-            txtPass.setText(""); 
+            pwdPass.setText(""); 
             return;
         }
         
         //Si existe y los datos son correctos, pasamos a la siguiente página
         JOptionPane.showMessageDialog(this, "Bienvenido " + empleado.getNombre());
         
-        Bienvenida bienvenida = new Bienvenida(empleado);
+        Principal bienvenida = new Principal(empleado);
         bienvenida.setVisible(true);
         dispose();
         
@@ -257,7 +259,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField pwdPass;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

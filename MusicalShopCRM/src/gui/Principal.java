@@ -8,8 +8,12 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.Paint;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import model.EmpleadoModel;
@@ -28,21 +32,21 @@ import pojos.Empleado;
  *
  * @author herre
  */
-public class Bienvenida extends javax.swing.JDialog {
+public class Principal extends javax.swing.JDialog {
     
-   private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Bienvenida.class.getName());
+   private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Principal.class.getName());
 
     private Empleado empleado;
     /**
      * Creates new form Bienvenida
      */
-    public Bienvenida(Empleado empleado) {
+    public Principal(Empleado empleado) {
         this.empleado = empleado;
         initComponents();
 
 
         //Título
-        setTitle("CRM Music Shop - Bienvenida");
+        setTitle("CRM Music Shop - Página Principal");
 
         //Tamaño, redimensionamiento y centrado
         setSize(1250, 800);  
@@ -57,10 +61,7 @@ public class Bienvenida extends javax.swing.JDialog {
         cargarGraficoVentas();
         
         //Cargamos el gráfico de las categorías de los productos
-        cargarGraficoProductos();
-        
-        //Estilos de los campos
-        
+        cargarGraficoProductos();        
     }
  
     
@@ -111,7 +112,7 @@ public class Bienvenida extends javax.swing.JDialog {
                 //Color según el volumen de ventas
                 if (ventas < 1000) {
                     return Color.RED;           //ventas bajas
-                } else if (ventas < 2000) {
+                } else if (ventas >= 1000 && ventas < 2000) {
                     return Color.YELLOW;        //ventas medias
                 } else {
                     return Color.GREEN;         //ventas altas
@@ -209,7 +210,6 @@ public class Bienvenida extends javax.swing.JDialog {
         btnPedidos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1100, 750));
         setMinimumSize(new java.awt.Dimension(1100, 750));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -227,12 +227,22 @@ public class Bienvenida extends javax.swing.JDialog {
         lblOfertas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOfertas.setText("Ofertas");
         lblOfertas.setOpaque(true);
+        lblOfertas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblOfertasMouseClicked(evt);
+            }
+        });
 
         lblObjetivos.setBackground(new java.awt.Color(0, 153, 255));
         lblObjetivos.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         lblObjetivos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblObjetivos.setText("Objetivos de ventas");
         lblObjetivos.setOpaque(true);
+        lblObjetivos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblObjetivosMouseClicked(evt);
+            }
+        });
 
         pnGraficoVentas.setLayout(new java.awt.BorderLayout());
 
@@ -310,6 +320,16 @@ public class Bienvenida extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnProductosActionPerformed
 
+    //Abrimos el PDF Objetivos
+    private void lblObjetivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblObjetivosMouseClicked
+        abrirPDF("/pdf/objetivos.pdf");
+    }//GEN-LAST:event_lblObjetivosMouseClicked
+
+    //Abrimos el PDF Ofertas
+    private void lblOfertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOfertasMouseClicked
+        abrirPDF("/pdf/ofertas.pdf");
+    }//GEN-LAST:event_lblOfertasMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -324,5 +344,37 @@ public class Bienvenida extends javax.swing.JDialog {
     private javax.swing.JPanel pnGraficoProductos;
     private javax.swing.JPanel pnGraficoVentas;
     // End of variables declaration//GEN-END:variables
+
+    //Método para poder abrir un PDF desde NetBeans
+    private void abrirPDF(String ruta) {
+        try{
+            InputStream is = getClass().getResourceAsStream(ruta);      //Cargamos el PDF como recurso
+            if(is == null){
+                System.err.println("No se encontró el PDF");
+                return;
+            }
+            
+            //Creamos un pdf temporal
+            File temp = File.createTempFile("MusicalShop", ".pdf");
+            temp.deleteOnExit();    //Lo eliminamos al cerrar
+            
+            //leemos el archivo temporal, copia dle original
+            try(FileOutputStream fos = new FileOutputStream(temp)){
+                byte[] buffer = new byte[1024];     //Buffer de copia
+                int bytesRead;
+                
+                //Leemos el pdf
+                while ((bytesRead = is.read(buffer)) != -1) {
+                    fos.write(buffer, 0, bytesRead);    //Escritura temporal
+                }
+            }
+            
+            //Abrimos el PDF con el visor predeterminado
+            Desktop.getDesktop().open(temp);
+            
+        }catch (Exception ex) { 
+            ex.printStackTrace();
+        } 
+    }
 }
 

@@ -84,7 +84,6 @@ public class GaleriaProductos extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1250, 800));
         setMinimumSize(new java.awt.Dimension(1250, 800));
-        setPreferredSize(new java.awt.Dimension(1250, 800));
 
         pnCabecera.setBackground(new java.awt.Color(0, 153, 255));
         pnCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -142,7 +141,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
     }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        Bienvenida bienvenida = new Bienvenida(empleado);
+        Principal bienvenida = new Principal(empleado);
         bienvenida.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
@@ -221,6 +220,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
 
     private void abrirDetallesProducto(Producto p) {
         System.out.println("Abrir detalles de: " + p.getNombre()); 
-        // Aquí luego abriremos la ventana DetallesProducto    
+        Detalles ventana = new Detalles(null, true, empleado, p);       //Pasamos tanto el producto seleccionado como el empleado para registrar la venta
+        ventana.setVisible(true);
     }
 }

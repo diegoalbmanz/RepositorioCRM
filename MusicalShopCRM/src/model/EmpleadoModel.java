@@ -17,10 +17,10 @@ public class EmpleadoModel {
         // Datos iniciales
         empleados.add(new Empleado(1, "ana",   "1234", "Ana López",        1200));
         empleados.add(new Empleado(2, "juan",  "1234", "Juan Pérez",      1800));
-        empleados.add(new Empleado(3, "maria", "1234", "María García",    1500));
+        empleados.add(new Empleado(3, "maria", "1234", "María García",    700));
         empleados.add(new Empleado(4, "carlos","1234", "Carlos Sánchez",  2200));
         empleados.add(new Empleado(5, "laura", "1234", "Laura Martín",    1700));
-        empleados.add(new Empleado(6, "pedro", "1234", "Pedro Gómez",     2000));
+        empleados.add(new Empleado(6, "pedro", "1234", "Pedro Gómez",     800));
         empleados.add(new Empleado(7, "lucia", "1234", "Lucía Fernández", 1300));
         empleados.add(new Empleado(8, "david", "1234", "David Ruiz",      3000));
 
