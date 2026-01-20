@@ -6,6 +6,7 @@ package gui;
 
 
 
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -16,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 import model.EmpleadoModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -44,6 +46,12 @@ public class Principal extends javax.swing.JDialog {
         this.empleado = empleado;
         initComponents();
 
+        FlatLightLaf.setup();   
+        UIManager.put("Panel.background", Color.WHITE); // fondo blanco
+        UIManager.put("Button.arc", 30); // redondeo solo para botones
+              
+
+        getContentPane().setBackground(new Color(230, 230, 230));
 
         //Título
         setTitle("CRM Music Shop - Página Principal");
@@ -52,6 +60,8 @@ public class Principal extends javax.swing.JDialog {
         setSize(1250, 800);  
         setResizable(false);  
         setLocationRelativeTo(null);
+
+        UIManager.put("Button.arc", 30); // redondeo solo para botones
 
         //Icono de la ventana
         Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
@@ -222,10 +232,11 @@ public class Principal extends javax.swing.JDialog {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Página de Inicio");
 
-        lblOfertas.setBackground(new java.awt.Color(0, 153, 255));
+        lblOfertas.setBackground(new java.awt.Color(255, 255, 255));
         lblOfertas.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         lblOfertas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOfertas.setText("Ofertas");
+        lblOfertas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
         lblOfertas.setOpaque(true);
         lblOfertas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -233,10 +244,11 @@ public class Principal extends javax.swing.JDialog {
             }
         });
 
-        lblObjetivos.setBackground(new java.awt.Color(0, 153, 255));
-        lblObjetivos.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblObjetivos.setBackground(new java.awt.Color(255, 255, 255));
+        lblObjetivos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblObjetivos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblObjetivos.setText("Objetivos de ventas");
+        lblObjetivos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 153, 255)));
         lblObjetivos.setOpaque(true);
         lblObjetivos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -248,11 +260,11 @@ public class Principal extends javax.swing.JDialog {
 
         pnGraficoProductos.setLayout(new java.awt.BorderLayout());
 
-        pnCabecera.setBackground(new java.awt.Color(0, 153, 255));
+        pnCabecera.setBackground(new java.awt.Color(204, 204, 204));
         pnCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInicio.setText("Inicio");
-        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 131, 40));
+        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 20));
 
         btnProductos.setText("Productos");
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -260,37 +272,45 @@ public class Principal extends javax.swing.JDialog {
                 btnProductosActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 125, 40));
+        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 100, 20));
 
         btnPedidos.setText("Pedidos");
-        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 125, 40));
+        btnPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPedidosActionPerformed(evt);
+            }
+        });
+        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 100, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(164, 164, 164)
+                .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204))
+                .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(194, 194, 194))
             .addGroup(layout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnGraficoVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnGraficoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnGraficoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(15, 15, 15))
+                        .addGap(239, 239, 239)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,14 +319,14 @@ public class Principal extends javax.swing.JDialog {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel3)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblOfertas, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(lblObjetivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnGraficoProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                    .addComponent(pnGraficoProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                     .addComponent(pnGraficoVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -329,6 +349,10 @@ public class Principal extends javax.swing.JDialog {
     private void lblOfertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOfertasMouseClicked
         abrirPDF("/pdf/ofertas.pdf");
     }//GEN-LAST:event_lblOfertasMouseClicked
+
+    private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPedidosActionPerformed
 
 
 

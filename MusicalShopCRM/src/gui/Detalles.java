@@ -4,8 +4,10 @@
  */
 package gui;
 
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 import pojos.Empleado;
 import pojos.Producto;
 
@@ -38,10 +40,14 @@ public class Detalles extends javax.swing.JDialog {
          //Título
         setTitle("CRM Music Shop - Detalles producto");
 
+        getContentPane().setBackground(new Color(230, 230, 230));
+
         //Tamaño, redimensionamiento y centrado
         setSize(1250, 800);  
         setResizable(false);  
         setLocationRelativeTo(null);
+
+        UIManager.put("Button.arc", 30); // redondeo solo para botones
 
         //Icono de la ventana
         Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
@@ -77,9 +83,8 @@ public class Detalles extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1250, 800));
         setMinimumSize(new java.awt.Dimension(1250, 800));
-        setPreferredSize(new java.awt.Dimension(1250, 800));
 
-        pnCabecera.setBackground(new java.awt.Color(0, 153, 255));
+        pnCabecera.setBackground(new java.awt.Color(204, 204, 204));
         pnCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInicio.setText("Inicio");
@@ -88,7 +93,7 @@ public class Detalles extends javax.swing.JDialog {
                 btnInicioActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 131, 40));
+        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 20));
 
         btnProductos.setText("Productos");
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -96,12 +101,13 @@ public class Detalles extends javax.swing.JDialog {
                 btnProductosActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 125, 40));
+        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 90, 20));
 
         btnPedidos.setText("Pedidos");
-        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 125, 40));
+        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 100, 20));
 
         lblImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImagen.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         lblNombreProducto.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblNombreProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -149,8 +155,8 @@ public class Detalles extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

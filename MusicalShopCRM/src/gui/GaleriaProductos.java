@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import model.ProductoModel;
 import model.WrapLayout;
 import pojos.Empleado;
@@ -49,6 +50,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
         setSize(1250, 800);  
         setResizable(false);  
         setLocationRelativeTo(null);
+
 
         //Icono de la ventana
         Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
@@ -85,16 +87,17 @@ public class GaleriaProductos extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(1250, 800));
         setMinimumSize(new java.awt.Dimension(1250, 800));
 
-        pnCabecera.setBackground(new java.awt.Color(0, 153, 255));
+        pnCabecera.setBackground(new java.awt.Color(204, 204, 204));
         pnCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInicio.setText("Inicio");
+        btnInicio.setBorderPainted(false);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 131, 40));
+        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 20));
 
         btnProductos.setText("Productos");
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -102,10 +105,15 @@ public class GaleriaProductos extends javax.swing.JDialog {
                 btnProductosActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 125, 40));
+        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 110, 20));
 
         btnPedidos.setText("Pedidos");
-        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 125, 40));
+        btnPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPedidosActionPerformed(evt);
+            }
+        });
+        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 100, 20));
 
         pnGaleria.setMaximumSize(null);
         pnGaleria.setLayout(new java.awt.GridLayout(0, 4, 20, 20));
@@ -116,18 +124,15 @@ public class GaleriaProductos extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollProductos)
-                .addContainerGap())
+            .addComponent(scrollProductos, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(scrollProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,6 +150,10 @@ public class GaleriaProductos extends javax.swing.JDialog {
         bienvenida.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPedidosActionPerformed
 
 
 

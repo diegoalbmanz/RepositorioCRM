@@ -7,19 +7,12 @@ package pojos;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import model.EstadoPedido;
 
 /**
  *
  * @author Alumno
  */
-
-// Enum para el estado (puedes ponerlo en un archivo aparte llamado EstadoPedido.java)
-enum EstadoPedido {
-    PENDIENTE,
-    ENVIADO,
-    ENTREGADO,
-    CANCELADO
-}
 
 public class Pedido {
     private int id;
@@ -40,6 +33,17 @@ public class Pedido {
         this.id = id;
         this.cliente = cliente;
     }
+    
+    //Constructor completo
+    public Pedido(int id, List<Producto> productos, Cliente cliente, EstadoPedido estado, LocalDateTime fecha,double precioTotal) {
+        this.id = id;
+        this.productos = productos;
+        this.cliente = cliente;
+        this.estado = estado;
+        this.fecha = fecha;
+        this.precioTotal = precioTotal;
+    }
+
 
     // Método para agregar producto y recalcular total automáticamente
     public void agregarProducto(Producto p) {

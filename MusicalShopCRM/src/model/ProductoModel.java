@@ -138,14 +138,28 @@ public class ProductoModel {
         if (instance == null) instance = new ProductoModel();
         return instance;
     }
-
-    public void actualizarStock(int id, int cantidad) {
+    
+    public Producto getPorId(int id) {
         for (Producto p : productos) {
             if (p.getId() == id) {
-                p.setStock(p.getStock() - cantidad);
-                break;
+                return p;
             }
         }
+        return null;
+    }
+
+    public boolean hayStock(int id, int cantidad) {
+        Producto p = getPorId(id);
+        return p != null && p.getStock() >= cantidad;
+    }
+
+    public boolean actualizarStock(int id, int cantidad) {
+        Producto p = getPorId(id);
+        if (p != null && p.getStock() >= cantidad) {
+            p.setStock(p.getStock() - cantidad);
+            return true;
+        }
+        return false;
     }
 
     public List<Producto> getTodos() { return productos; }
