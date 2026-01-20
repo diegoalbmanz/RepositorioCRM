@@ -90,11 +90,20 @@ public class PedidoModel {
             );
     }
 
+    
     public static PedidoModel getInstance() {
         if (instance == null) instance = new PedidoModel();
         return instance;
     }
-
+    
+    public Pedido getPedidoPorId(int id) {
+    for (Pedido p : pedidos) {
+        if (p.getId() == id) {
+            return p;
+        }
+    }
+    return null;
+}
     public void registrarPedido(Pedido p) {
         pedidos.add(p);
         System.out.println("Pedido registrado ID: " + p.getId());

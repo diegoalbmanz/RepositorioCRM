@@ -6,6 +6,7 @@ package gui;
 
 
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -63,6 +64,41 @@ public class Principal extends javax.swing.JDialog {
 
         UIManager.put("Button.arc", 30); // redondeo solo para botones
 
+        jLabel4.setText("Bienvenido , \n"+ empleado.getNombre());
+        
+        jLabel4.setOpaque(true); // IMPORTANTE: Obligatorio para ver el color de fondo
+
+        lblOfertas.putClientProperty(FlatClientProperties.STYLE, 
+    "arc: 20;" +                // Redondeo de esquinas
+    "background: #ffffff;" +    // Color de fondo específico
+    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
+);
+                lblObjetivos.putClientProperty(FlatClientProperties.STYLE, 
+    "arc: 20;" +                // Redondeo de esquinas
+    "background: #ffffff;" +    // Color de fondo específico
+    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
+);
+                pnPDFS.putClientProperty(FlatClientProperties.STYLE, 
+    "arc: 20;" +                // Redondeo de esquinas
+    "background: #ffffff;" +    // Color de fondo específico
+    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
+);
+jLabel4.putClientProperty(FlatClientProperties.STYLE, 
+    "arc: 20;"                 // El redondeo
+);
+
+pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE, 
+    "arc: 20;" +                // Redondeo de esquinas
+    "background: #ffffff;" +    // Color de fondo específico
+    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
+);
+        pnGraficoProductos.putClientProperty(FlatClientProperties.STYLE, 
+    "arc: 20;" +                // Redondeo de esquinas
+    "background: #ffffff;" +    // Color de fondo específico
+    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
+);
+
+        
         //Icono de la ventana
         Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
         setIconImage(icon);
@@ -208,63 +244,38 @@ public class Principal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblOfertas = new javax.swing.JLabel();
-        lblObjetivos = new javax.swing.JLabel();
         pnGraficoVentas = new javax.swing.JPanel();
         pnGraficoProductos = new javax.swing.JPanel();
         pnCabecera = new javax.swing.JPanel();
         btnInicio = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
         btnPedidos = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        pnPDFS = new javax.swing.JPanel();
+        lblObjetivos = new javax.swing.JLabel();
+        lblOfertas = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1100, 750));
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("BIENVENIDO A MUSICALSHOP CRM");
-        jLabel2.setOpaque(true);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Página de Inicio");
-
-        lblOfertas.setBackground(new java.awt.Color(255, 255, 255));
-        lblOfertas.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        lblOfertas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblOfertas.setText("Ofertas");
-        lblOfertas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
-        lblOfertas.setOpaque(true);
-        lblOfertas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblOfertasMouseClicked(evt);
-            }
-        });
-
-        lblObjetivos.setBackground(new java.awt.Color(255, 255, 255));
-        lblObjetivos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblObjetivos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblObjetivos.setText("Objetivos de ventas");
-        lblObjetivos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 153, 255)));
-        lblObjetivos.setOpaque(true);
-        lblObjetivos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblObjetivosMouseClicked(evt);
-            }
-        });
 
         pnGraficoVentas.setLayout(new java.awt.BorderLayout());
 
         pnGraficoProductos.setLayout(new java.awt.BorderLayout());
 
-        pnCabecera.setBackground(new java.awt.Color(204, 204, 204));
+        pnCabecera.setBackground(new java.awt.Color(255, 255, 255));
+        pnCabecera.setForeground(new java.awt.Color(50, 112, 236));
         pnCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInicio.setText("Inicio");
-        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 20));
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 60, 20));
 
         btnProductos.setText("Productos");
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +283,7 @@ public class Principal extends javax.swing.JDialog {
                 btnProductosActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 100, 20));
+        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 110, 20));
 
         btnPedidos.setText("Pedidos");
         btnPedidos.addActionListener(new java.awt.event.ActionListener() {
@@ -280,65 +291,115 @@ public class Principal extends javax.swing.JDialog {
                 btnPedidosActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 100, 20));
+        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 100, 20));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoApp 2.png"))); // NOI18N
+        pnCabecera.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 40));
+        pnCabecera.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setOpaque(true);
+
+        pnPDFS.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblObjetivos.setBackground(new java.awt.Color(255, 255, 255));
+        lblObjetivos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblObjetivos.setForeground(new java.awt.Color(102, 102, 255));
+        lblObjetivos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblObjetivos.setText("Objetivos de ventas");
+        lblObjetivos.setOpaque(true);
+        lblObjetivos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblObjetivosMouseClicked(evt);
+            }
+        });
+
+        lblOfertas.setBackground(new java.awt.Color(255, 255, 255));
+        lblOfertas.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        lblOfertas.setForeground(new java.awt.Color(102, 102, 255));
+        lblOfertas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblOfertas.setText("Ofertas");
+        lblOfertas.setOpaque(true);
+        lblOfertas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblOfertasMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
+        jLabel1.setText("Generar PDF");
+
+        javax.swing.GroupLayout pnPDFSLayout = new javax.swing.GroupLayout(pnPDFS);
+        pnPDFS.setLayout(pnPDFSLayout);
+        pnPDFSLayout.setHorizontalGroup(
+            pnPDFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnPDFSLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnPDFSLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(188, 188, 188))
+        );
+        pnPDFSLayout.setVerticalGroup(
+            pnPDFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnPDFSLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(pnPDFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(194, 194, 194))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnGraficoVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnGraficoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))
+                        .addContainerGap()
+                        .addComponent(pnGraficoVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(pnGraficoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(pnPDFS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblOfertas, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(lblObjetivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26)
+                .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnGraficoProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
-                    .addComponent(pnGraficoVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(pnPDFS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnGraficoProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                    .addComponent(pnGraficoVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
-        GaleriaProductos galeria = new GaleriaProductos(empleado);
-        galeria.setVisible(true);
-        dispose();
-        
-    }//GEN-LAST:event_btnProductosActionPerformed
 
     //Abrimos el PDF Objetivos
     private void lblObjetivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblObjetivosMouseClicked
@@ -350,8 +411,23 @@ public class Principal extends javax.swing.JDialog {
         abrirPDF("/pdf/ofertas.pdf");
     }//GEN-LAST:event_lblOfertasMouseClicked
 
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        Principal bienvenida = new Principal(empleado);
+        bienvenida.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        GaleriaProductos galeria = new GaleriaProductos(empleado);
+        galeria.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnProductosActionPerformed
+
     private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
         // TODO add your handling code here:
+              Pedidos p = new Pedidos(null , true,empleado);
+        p.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnPedidosActionPerformed
 
 
@@ -360,13 +436,16 @@ public class Principal extends javax.swing.JDialog {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnPedidos;
     private javax.swing.JButton btnProductos;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblObjetivos;
     private javax.swing.JLabel lblOfertas;
     private javax.swing.JPanel pnCabecera;
     private javax.swing.JPanel pnGraficoProductos;
     private javax.swing.JPanel pnGraficoVentas;
+    private javax.swing.JPanel pnPDFS;
     // End of variables declaration//GEN-END:variables
 
     //Método para poder abrir un PDF desde NetBeans

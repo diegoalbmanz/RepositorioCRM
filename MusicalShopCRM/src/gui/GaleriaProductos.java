@@ -4,6 +4,8 @@
  */
 package gui;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -51,10 +53,20 @@ public class GaleriaProductos extends javax.swing.JDialog {
         setResizable(false);  
         setLocationRelativeTo(null);
 
+                        FlatLightLaf.setup();   
+        UIManager.put("Panel.background", Color.WHITE); // fondo blanco
+        UIManager.put("Button.arc", 30); // redondeo solo para botones
+       
 
         //Icono de la ventana
         Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
         setIconImage(icon);
+        
+                lblTitulo.putClientProperty(FlatClientProperties.STYLE, 
+    "arc: 20;" +                // Redondeo de esquinas
+    "background: #ffffff;" +    // Color de fondo específico
+    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
+);
         
         //Desactivamos el scroll horizontal
         scrollProductos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -76,28 +88,39 @@ public class GaleriaProductos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        scrollProductos = new javax.swing.JScrollPane();
+        pnGaleria = new javax.swing.JPanel();
         pnCabecera = new javax.swing.JPanel();
         btnInicio = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
         btnPedidos = new javax.swing.JButton();
-        scrollProductos = new javax.swing.JScrollPane();
-        pnGaleria = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1250, 800));
         setMinimumSize(new java.awt.Dimension(1250, 800));
 
-        pnCabecera.setBackground(new java.awt.Color(204, 204, 204));
+        pnGaleria.setBackground(new java.awt.Color(255, 255, 255));
+        pnGaleria.setMaximumSize(null);
+        pnGaleria.setLayout(new java.awt.GridLayout(0, 4, 20, 20));
+        scrollProductos.setViewportView(pnGaleria);
+
+        pnCabecera.setBackground(new java.awt.Color(255, 255, 255));
+        pnCabecera.setForeground(new java.awt.Color(50, 112, 236));
         pnCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInicio.setText("Inicio");
-        btnInicio.setBorderPainted(false);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 20));
+        pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 60, 20));
 
         btnProductos.setText("Productos");
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +128,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
                 btnProductosActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 110, 20));
+        pnCabecera.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 110, 20));
 
         btnPedidos.setText("Pedidos");
         btnPedidos.addActionListener(new java.awt.event.ActionListener() {
@@ -113,37 +136,43 @@ public class GaleriaProductos extends javax.swing.JDialog {
                 btnPedidosActionPerformed(evt);
             }
         });
-        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 100, 20));
+        pnCabecera.add(btnPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 100, 20));
 
-        pnGaleria.setMaximumSize(null);
-        pnGaleria.setLayout(new java.awt.GridLayout(0, 4, 20, 20));
-        scrollProductos.setViewportView(pnGaleria);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoApp 2.png"))); // NOI18N
+        pnCabecera.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 40));
+        pnCabecera.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setText("          PRODUCTOS");
+        lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE)
-            .addComponent(scrollProductos, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(pnCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollProductos)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(489, 489, 489)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(558, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(scrollProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
-        GaleriaProductos galeria = new GaleriaProductos(empleado);
-        galeria.setVisible(true);
-        dispose();
-
-    }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         Principal bienvenida = new Principal(empleado);
@@ -151,8 +180,18 @@ public class GaleriaProductos extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnInicioActionPerformed
 
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        GaleriaProductos galeria = new GaleriaProductos(empleado);
+        galeria.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnProductosActionPerformed
+
     private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
         // TODO add your handling code here:
+              Pedidos p = new Pedidos(null , true,empleado);
+        p.setVisible(true);
+        dispose();
+                    
     }//GEN-LAST:event_btnPedidosActionPerformed
 
 
@@ -161,6 +200,10 @@ public class GaleriaProductos extends javax.swing.JDialog {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnPedidos;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnCabecera;
     private javax.swing.JPanel pnGaleria;
     private javax.swing.JScrollPane scrollProductos;
