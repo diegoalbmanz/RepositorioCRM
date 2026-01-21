@@ -80,7 +80,7 @@ public class Principal extends javax.swing.JDialog {
 );
                 pnPDFS.putClientProperty(FlatClientProperties.STYLE, 
     "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
+    "background: #99CCFF;" +    // Color de fondo específico
     "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
 );
 jLabel4.putClientProperty(FlatClientProperties.STYLE, 
@@ -256,7 +256,6 @@ pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE,
         pnPDFS = new javax.swing.JPanel();
         lblObjetivos = new javax.swing.JLabel();
         lblOfertas = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1100, 750));
@@ -297,16 +296,15 @@ pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE,
         pnCabecera.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 40));
         pnCabecera.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setOpaque(true);
 
-        pnPDFS.setBackground(new java.awt.Color(255, 255, 255));
+        pnPDFS.setBackground(new java.awt.Color(153, 204, 255));
 
         lblObjetivos.setBackground(new java.awt.Color(255, 255, 255));
         lblObjetivos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblObjetivos.setForeground(new java.awt.Color(102, 102, 255));
         lblObjetivos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblObjetivos.setText("Objetivos de ventas");
         lblObjetivos.setOpaque(true);
@@ -318,7 +316,6 @@ pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE,
 
         lblOfertas.setBackground(new java.awt.Color(255, 255, 255));
         lblOfertas.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        lblOfertas.setForeground(new java.awt.Color(102, 102, 255));
         lblOfertas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOfertas.setText("Ofertas");
         lblOfertas.setOpaque(true);
@@ -328,34 +325,25 @@ pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE,
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
-        jLabel1.setText("Generar PDF");
-
         javax.swing.GroupLayout pnPDFSLayout = new javax.swing.GroupLayout(pnPDFS);
         pnPDFS.setLayout(pnPDFSLayout);
         pnPDFSLayout.setHorizontalGroup(
             pnPDFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnPDFSLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnPDFSLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(188, 188, 188))
         );
         pnPDFSLayout.setVerticalGroup(
             pnPDFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnPDFSLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+            .addGroup(pnPDFSLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
                 .addGroup(pnPDFSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                    .addComponent(lblOfertas, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblObjetivos, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -369,7 +357,7 @@ pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE,
                         .addContainerGap()
                         .addComponent(pnGraficoVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(50, 50, 50)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,7 +366,7 @@ pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE,
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(pnPDFS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76))))
+                        .addGap(68, 68, 68))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,14 +374,14 @@ pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE,
                 .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(pnPDFS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(pnPDFS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnGraficoProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                    .addComponent(pnGraficoProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                     .addComponent(pnGraficoVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
@@ -436,7 +424,6 @@ pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE,
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnPedidos;
     private javax.swing.JButton btnProductos;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

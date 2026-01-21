@@ -15,7 +15,7 @@ public class ClienteModel {
     private ClienteModel() {
         clientes = new ArrayList<>();
 
-        clientes.add(new Cliente("11111111X", "Juan", "Pérez",
+        clientes.add(new Cliente("11111111X", "Raúl", "Pérez",
                 "Calle 1", "600000001", "juan@mail.com"));
 
         clientes.add(new Cliente("22222222Y", "María", "Sanz",

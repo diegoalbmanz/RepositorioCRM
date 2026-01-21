@@ -21,14 +21,15 @@ public class VerPedido extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VerPedido.class.getName());
 
-// Modificamos el constructor para recibir el objeto Pedido
+    //Modificamos el constructor para recibir el objeto Pedido
     public VerPedido(java.awt.Frame parent, boolean modal, Pedido pedido) {
         super(parent, modal);
         this.pedido = pedido;
         initComponents();
         
         setTitle("Consulta de Pedido #" + pedido.getId());
-        setSize(800, 600);
+        //setSize(800, 500);
+        setResizable(false);
         setLocationRelativeTo(null);
         
         configurarTabla();
@@ -40,23 +41,23 @@ public class VerPedido extends javax.swing.JDialog {
         tablaModelo.addColumn("Producto");
         tablaModelo.addColumn("Categoría");
         tablaModelo.addColumn("Precio");
-        tblDetalles.setModel(tablaModelo); // Asegúrate de que tu tabla se llame tblDetalles
-        tblDetalles.setEnabled(false); // Deshabilitar edición
+        tblDetalles.setModel(tablaModelo); 
+        tblDetalles.setEnabled(false);          //Deshabilitamos la edición
     }
 
     private void cargarDatos() {
-        // 1. Cargar etiquetas (Asegúrate de tener estos JLabels en tu diseño)
+        //Cargamos las etiquetas
         lblId.setText("Pedido Nº: " + pedido.getId());
         lblCliente.setText("Cliente: " + pedido.getCliente().getNombreCompleto());
         lblEstado.setText("Estado: " + pedido.getEstado().toString());
         
-        // Formatear fecha bonita
+        //Formatear fecha 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         lblFecha.setText("Fecha: " + pedido.getFecha().format(formatter));
         
         lblTotal.setText(String.format("TOTAL: %.2f €", pedido.getPrecioTotal()));
 
-        // 2. Cargar la tabla de productos
+        //Cargamos la tabla de productos
         tablaModelo.setRowCount(0);
         List<Producto> productos = pedido.getProductos();
         
@@ -78,6 +79,7 @@ public class VerPedido extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDetalles = new javax.swing.JTable();
@@ -90,8 +92,11 @@ public class VerPedido extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         tblDetalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,31 +111,101 @@ public class VerPedido extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblDetalles);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 530, 288));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 10.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
 
         lblId.setText("jLabel2");
-        getContentPane().add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 81, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(15, 50, 15, 50);
+        getContentPane().add(lblId, gridBagConstraints);
 
         lblCliente.setText("jLabel3");
-        getContentPane().add(lblCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 57, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.insets = new java.awt.Insets(15, 50, 15, 50);
+        getContentPane().add(lblCliente, gridBagConstraints);
 
         lblEstado.setText("jLabel5");
-        getContentPane().add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 61, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(15, 50, 15, 50);
+        getContentPane().add(lblEstado, gridBagConstraints);
 
         lblFecha.setText("jLabel6");
-        getContentPane().add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 61, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.insets = new java.awt.Insets(15, 50, 15, 50);
+        getContentPane().add(lblFecha, gridBagConstraints);
 
         jLabel3.setText("TOTAL :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 62, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(15, 50, 15, 50);
+        getContentPane().add(jLabel3, gridBagConstraints);
 
         lblTotal.setText("jLabel3");
-        getContentPane().add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 441, 66, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(15, 50, 15, 50);
+        getContentPane().add(lblTotal, gridBagConstraints);
 
         jButton1.setBackground(new java.awt.Color(255, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("CERRAR");
         jButton1.addActionListener(this::jButton1ActionPerformed);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 137, 45));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(15, 50, 15, 50);
+        getContentPane().add(jButton1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

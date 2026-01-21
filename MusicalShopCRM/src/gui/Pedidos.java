@@ -75,7 +75,7 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
     "background: #ffffff;" +    // Color de fondo específico
     "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
 );
-        jPanel3.putClientProperty(FlatClientProperties.STYLE, 
+        btnOtrasAcciones.putClientProperty(FlatClientProperties.STYLE, 
     "arc: 20;" +                // Redondeo de esquinas
     "background: #ffffff;" +    // Color de fondo específico
     "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
@@ -124,13 +124,12 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
         btnBorrarProducto = new javax.swing.JButton();
         btnCompletarPedido = new javax.swing.JButton();
         cmbClientes = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
+        btnOtrasAcciones = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnBuscarPedido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1250, 800));
         setMinimumSize(new java.awt.Dimension(1250, 800));
         setResizable(false);
 
@@ -233,6 +232,7 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
         });
 
         btnCompletarPedido.setBackground(new java.awt.Color(153, 255, 153));
+        btnCompletarPedido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCompletarPedido.setText("Completar Pedido");
         btnCompletarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,7 +302,7 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
                 .addGap(124, 124, 124))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        btnOtrasAcciones.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel4.setText("Otras Acciones");
@@ -324,35 +324,36 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jButton4.setBackground(new java.awt.Color(153, 204, 255));
-        jButton4.setText("Buscar pedido por ID");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarPedido.setBackground(new java.awt.Color(153, 204, 255));
+        btnBuscarPedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarPedido.setText("Buscar pedido por ID");
+        btnBuscarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnBuscarPedidoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnOtrasAccionesLayout = new javax.swing.GroupLayout(btnOtrasAcciones);
+        btnOtrasAcciones.setLayout(btnOtrasAccionesLayout);
+        btnOtrasAccionesLayout.setHorizontalGroup(
+            btnOtrasAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOtrasAccionesLayout.createSequentialGroup()
                 .addContainerGap(44, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(btnOtrasAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOtrasAccionesLayout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(73, 73, 73))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnOtrasAccionesLayout.createSequentialGroup()
+                        .addComponent(btnBuscarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        btnOtrasAccionesLayout.setVerticalGroup(
+            btnOtrasAccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnOtrasAccionesLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -365,7 +366,7 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
                 .addGap(47, 47, 47)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnOtrasAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -374,7 +375,7 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
                 .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOtrasAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48))
         );
@@ -388,12 +389,12 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
         tablaModelo.addColumn("Producto");
         tablaModelo.addColumn("Categoría");
         tablaModelo.addColumn("Precio");
-        tblProductos.setModel(tablaModelo); // Asegúrate de llamar a tu JTable 'tblProductos'
+        tblProductos.setModel(tablaModelo); 
     }
 
     // Llenar el ComboBox con los clientes existentes
     private void cargarComboClientes() {
-        cmbClientes.removeAllItems(); // Asegúrate de llamar a tu ComboBox 'cmbClientes'
+        cmbClientes.removeAllItems(); 
         List<Cliente> clientes = ClienteModel.getInstance().getTodos();
         for (Cliente c : clientes) {
             cmbClientes.addItem(c.getNombre() + " " + c.getApellidos() + " (" + c.getDni() + ")");
@@ -415,10 +416,10 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
         }
         
         // Actualizar el Label del total
-        lblTotal.setText(String.format("%.2f €", Carrito.getInstance().getTotal())); // Asegúrate de tener un JLabel 'lblTotal'
+        lblTotal.setText(String.format("%.2f €", Carrito.getInstance().getTotal())); 
     }
     
-    
+    //Botones cabecera
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         Principal bienvenida = new Principal(empleado);
         bienvenida.setVisible(true);
@@ -436,8 +437,8 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
  
     }//GEN-LAST:event_btnPedidosActionPerformed
 
+    //Botón para cancelar un pedido
     private void btnCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPedidoActionPerformed
-        // TODO add your handling code here:
         // 1. Verificar si ya está vacío para no preguntar innecesariamente
         if (carrito.getProductos().isEmpty()) {
             return;
@@ -457,11 +458,13 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
             // 4. Actualizar la vista (tabla vacía y total a 0)
             cargarDatosCarrito();
         }
+        
+        //Cerramos la ventana
+        this.dispose();
     }//GEN-LAST:event_btnCancelarPedidoActionPerformed
 
     private void btnClienteNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteNuevoActionPerformed
-            // TODO add your handling code here:
-            // Desactivamos el estado "seleccionado" del toggle visualmente al terminar
+        // Desactivamos el estado "seleccionado" del toggle visualmente al terminar
         btnClienteNuevo.setSelected(false);
 
         // 1. Pedir DNI primero para validar si existe
@@ -508,7 +511,6 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
     }//GEN-LAST:event_btnClienteNuevoActionPerformed
 
     private void btnBorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProductoActionPerformed
-        // TODO add your handling code here:
         int filaSeleccionada = tblProductos.getSelectedRow();
 
     // 2. Validar que se haya seleccionado algo
@@ -575,9 +577,9 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
         new Principal(empleado).setVisible(true);
     }//GEN-LAST:event_btnCompletarPedidoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        // 1. Pedir el ID al usuario
+    //Botón para buscar un pedido por su ID
+    private void btnBuscarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPedidoActionPerformed
+    // 1. Pedir el ID al usuario
     String input = javax.swing.JOptionPane.showInputDialog(this, "Introduce el ID del pedido a consultar:");
     
     // Si cancela o lo deja vacío, salimos
@@ -600,19 +602,20 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
     } catch (NumberFormatException e) {
         javax.swing.JOptionPane.showMessageDialog(this, "Por favor, introduce un número válido.", "Error de formato", javax.swing.JOptionPane.ERROR_MESSAGE);
     }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnBuscarPedidoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrarProducto;
+    private javax.swing.JButton btnBuscarPedido;
     private javax.swing.JButton btnCancelarPedido;
     private javax.swing.JToggleButton btnClienteNuevo;
     private javax.swing.JButton btnCompletarPedido;
     private javax.swing.JButton btnInicio;
+    private javax.swing.JPanel btnOtrasAcciones;
     private javax.swing.JButton btnPedidos;
     private javax.swing.JButton btnProductos;
     private javax.swing.JComboBox<String> cmbClientes;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -620,7 +623,6 @@ jPanel2.putClientProperty(FlatClientProperties.STYLE,
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTotal;

@@ -114,8 +114,6 @@ public class InicioSesion extends javax.swing.JFrame {
 
         jLabel6.setText("-------------------  OR  --------------------");
 
-        pwdPass.setText("jPasswordField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

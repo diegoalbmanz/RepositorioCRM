@@ -16,7 +16,7 @@ public class EmpleadoModel {
         empleados = new ArrayList<>();
         // Datos iniciales
         empleados.add(new Empleado(1, "ana",   "1234", "Ana López",        1200));
-        empleados.add(new Empleado(2, "juan",  "1234", "Juan Pérez",      1800));
+        empleados.add(new Empleado(2, "juan",  "1234", "Juan González",    1800));
         empleados.add(new Empleado(3, "maria", "1234", "María García",    700));
         empleados.add(new Empleado(4, "carlos","1234", "Carlos Sánchez",  2200));
         empleados.add(new Empleado(5, "laura", "1234", "Laura Martín",    1700));

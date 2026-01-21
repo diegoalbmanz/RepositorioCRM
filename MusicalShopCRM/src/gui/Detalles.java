@@ -116,7 +116,7 @@ public class Detalles extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1250, 800));
+        setBackground(new java.awt.Color(153, 204, 255));
         setMinimumSize(new java.awt.Dimension(1250, 800));
 
         lblImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -169,6 +169,11 @@ public class Detalles extends javax.swing.JDialog {
         pnCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInicio.setText("Inicio");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
         pnCabecera.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 60, 20));
 
         btnProductos.setText("Productos");
@@ -236,52 +241,57 @@ public class Detalles extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //Botón para volver a la galería de productos
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    //Botón para añadir un producto al carrito de la compra
     private void btnAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAniadirActionPerformed
-        //En implementación
-        // 1. Verificar si hay stock disponible
+        //Verificamos que hay stock disponible
         if (producto.getStock() <= 0) {
              javax.swing.JOptionPane.showMessageDialog(this, "Lo sentimos, no hay stock disponible.", "Sin Stock", javax.swing.JOptionPane.WARNING_MESSAGE);
              return;
         }
 
-        // 2. Añadir al carrito (usando el Singleton que acabamos de crear)
+        //Añadir al carrito (usando el Singleton que acabamos de crear)
         model.Carrito.getInstance().agregarProducto(producto);
         
-        // 3. Feedback al usuario
+        //Feedback al usuario
         int opcion = javax.swing.JOptionPane.showConfirmDialog(this, 
             "Producto añadido al carrito.\n¿Quieres ir a terminar el pedido?", 
             "Carrito", 
             javax.swing.JOptionPane.YES_NO_OPTION);
             
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
-            // Abrir ventana de Pedidos
+            //Abrir ventana de Pedidos
             Pedidos ventanaPedidos = new Pedidos(null, true, empleado);
             ventanaPedidos.setVisible(true);
-            this.dispose(); // Cierra detalles
+            this.dispose();         //Cierra detalles
         } else {
-            // Cierra detalles para volver a la galería y seguir comprando
+            //Cierra detalles para volver a la galería y seguir comprando
             this.dispose(); 
         }
     }//GEN-LAST:event_btnAniadirActionPerformed
-
+    //Botones cabecera
     private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
-        // TODO add your handling code here:
-                      Pedidos p = new Pedidos(null , true,empleado);
+        Pedidos p = new Pedidos(null , true,empleado);
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPedidosActionPerformed
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
-        // TODO add your handling code here:
-                GaleriaProductos galeria = new GaleriaProductos(empleado);
+        GaleriaProductos galeria = new GaleriaProductos(empleado);
         galeria.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        Principal bienvenida = new Principal(empleado);
+        bienvenida.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
 
     //Método para cargar el producto que recibimos de la galería
     private void cargarDatos() {

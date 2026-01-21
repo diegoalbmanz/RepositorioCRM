@@ -54,7 +54,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
         setLocationRelativeTo(null);
 
                         FlatLightLaf.setup();   
-        UIManager.put("Panel.background", Color.WHITE); // fondo blanco
+        pnGaleria.setBackground(new Color(242, 242, 242)); // fondo gris
         UIManager.put("Button.arc", 30); // redondeo solo para botones
        
 
@@ -73,7 +73,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
         scrollProductos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         //Añadimos el layout personalizado para las cards
-        pnGaleria.setLayout(new WrapLayout(FlowLayout.LEFT, 20, 20));
+        pnGaleria.setLayout(new WrapLayout(FlowLayout.CENTER, 20, 20));
         
         //Método para cargar las cards en el Scroll Pane
         cargarCardsProductos();
@@ -105,7 +105,6 @@ public class GaleriaProductos extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(1250, 800));
         setMinimumSize(new java.awt.Dimension(1250, 800));
 
-        pnGaleria.setBackground(new java.awt.Color(255, 255, 255));
         pnGaleria.setMaximumSize(null);
         pnGaleria.setLayout(new java.awt.GridLayout(0, 4, 20, 20));
         scrollProductos.setViewportView(pnGaleria);
@@ -152,13 +151,14 @@ public class GaleriaProductos extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollProductos)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(489, 489, 489)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(558, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(489, 489, 489)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(scrollProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 1210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,14 +166,14 @@ public class GaleriaProductos extends javax.swing.JDialog {
                 .addComponent(pnCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(scrollProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Botones cabecera
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         Principal bienvenida = new Principal(empleado);
         bienvenida.setVisible(true);
@@ -187,8 +187,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
     }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
-        // TODO add your handling code here:
-              Pedidos p = new Pedidos(null , true,empleado);
+        Pedidos p = new Pedidos(null , true,empleado);
         p.setVisible(true);
         dispose();
                     
@@ -254,6 +253,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
 
         //Listener del botón
         JButton btnDetalles = new JButton("Ver detalles"); 
+        btnDetalles.setBackground(new Color(153,204,255));
         btnDetalles.addActionListener(e -> abrirDetallesProducto(p)); 
         
         //Distribución del panel
