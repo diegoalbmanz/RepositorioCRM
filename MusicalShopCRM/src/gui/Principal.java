@@ -10,6 +10,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.Paint;
@@ -41,74 +42,95 @@ public class Principal extends javax.swing.JDialog {
 
     private Empleado empleado;
     /**
-     * Creates new form Bienvenida
+     * Creates new form herre
      */
     public Principal(Empleado empleado) {
+
+        //Asignación del empleado
         this.empleado = empleado;
-        initComponents();
 
-        FlatLightLaf.setup();   
-        UIManager.put("Panel.background", Color.WHITE); // fondo blanco
-        UIManager.put("Button.arc", 30); // redondeo solo para botones
-              
-
-        getContentPane().setBackground(new Color(230, 230, 230));
-
-        //Título
-        setTitle("CRM Music Shop - Página Principal");
-
-        //Tamaño, redimensionamiento y centrado
-        setSize(1250, 800);  
-        setResizable(false);  
-        setLocationRelativeTo(null);
-
-        UIManager.put("Button.arc", 30); // redondeo solo para botones
-
-        jLabel4.setText("Bienvenido , \n"+ empleado.getNombre());
+        //Inicialización de componentes
+        initComponents();      
         
-        jLabel4.setOpaque(true); // IMPORTANTE: Obligatorio para ver el color de fondo
-
-        lblOfertas.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-                lblObjetivos.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-                pnPDFS.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #99CCFF;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-jLabel4.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;"                 // El redondeo
-);
-
-pnGraficoVentas.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        pnGraficoProductos.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-
+        //Configuración de la ventana
+        setTitle("CRM Music Shop - Página Principal"); //Título
+        setSize(1250, 800); //Tamaño
+        setResizable(false); //No redimensionable
+        setLocationRelativeTo(null); //Centrado en pantalla
         
         //Icono de la ventana
-        Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
+        Image icon = new ImageIcon(
+            getClass().getResource("/img/iconoApp.png")
+        ).getImage();
         setIconImage(icon);
-        
-        //Cargamos el gráfico con las ventas de los empleados
+
+        //Configuración de FlatLaf
+        FlatLightLaf.setup();
+
+        //Configuración global de UI
+        UIManager.put("Panel.background", Color.WHITE); //Fondo blanco
+        UIManager.put("Button.arc", 30); //Redondeo solo para botones
+
+        //Color de fondo del contenedor principal
+        getContentPane().setBackground(new Color(230, 230, 230));
+
+        //Texto de bienvenida
+        jLabel4.setText("Bienvenido , \n" + empleado.getNombre());
+        jLabel4.setOpaque(true); //Obligatorio para mostrar fondo
+
+        //Estilos FlatLaf para componentes
+        lblOfertas.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        lblObjetivos.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        pnPDFS.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #99CCFF;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        jLabel4.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;"
+        );
+
+        pnGraficoVentas.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        pnGraficoProductos.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        //Cursores personalizados
+        btnInicio.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnPedidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnProductos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        lblObjetivos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        lblOfertas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        //Carga de gráficos
         cargarGraficoVentas();
-        
-        //Cargamos el gráfico de las categorías de los productos
-        cargarGraficoProductos();        
+        cargarGraficoProductos();
     }
+
  
     
     //Método para construis el gráfico con las ventas de los empleados

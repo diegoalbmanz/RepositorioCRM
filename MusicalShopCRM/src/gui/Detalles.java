@@ -6,6 +6,7 @@ package gui;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
@@ -28,67 +29,94 @@ public class Detalles extends javax.swing.JDialog {
     /**
      * Creates new form Detalles
      */
-    public Detalles(java.awt.Frame parent, boolean modal, Empleado empleado, Producto producto) { 
+    public Detalles(java.awt.Frame parent, boolean modal, Empleado empleado, Producto producto) {
+
+        //Llamada al constructor padre
         super(parent, modal);
+
+        //Asignación de objetos
         this.empleado = empleado;
         this.producto = producto;
-        initComponents();
-        
-        //Manjeamos el scroll del TxtArea a través de código
-        txtDescripcion.setLineWrap(true);        //Activa el salto de línea
-        txtDescripcion.setWrapStyleWord(true);   //Rompe por palabra, no por letra        
-        
-         //Título
-        setTitle("CRM Music Shop - Detalles producto");
 
+        //Inicialización de componentes
+        initComponents();
+
+        //Configuración del JTextArea
+        txtDescripcion.setLineWrap(true); //Activa el salto de línea
+        txtDescripcion.setWrapStyleWord(true); //Rompe por palabra
+
+        //Configuración de la ventana
+        setTitle("CRM Music Shop - Detalles producto"); //Título
+        setSize(1250, 800); //Tamaño
+        setResizable(false); //No redimensionable
+        setLocationRelativeTo(null); //Centrado en pantalla     
+        
+        //Icono de la ventana
+        Image icon = new ImageIcon(
+            getClass().getResource("/img/iconoApp.png")
+        ).getImage();
+        setIconImage(icon);
+
+        //Color de fondo del contenedor principal
         getContentPane().setBackground(new Color(230, 230, 230));
 
-        lblImagen.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        lblCategoria.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        lblNombreProducto.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        lblPrecio1.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        lblStock.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        txtDescripcion.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        
-        
-        //Tamaño, redimensionamiento y centrado
-        setSize(1250, 800);  
-        setResizable(false);  
-        setLocationRelativeTo(null);
+        //Configuración de estilos FlatLaf
+        UIManager.put("Button.arc", 30); //Redondeo solo para botones
 
-        UIManager.put("Button.arc", 30); // redondeo solo para botones
+        //Estilos de componentes
+        lblImagen.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
 
-        //Icono de la ventana
-        Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
-        setIconImage(icon);
-        
-        //Lamamos al método para cargar los datos del producto seleccionado
+        lblCategoria.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        lblNombreProducto.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        lblPrecio1.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        lblStock.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        txtDescripcion.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        //Cursores personalizados
+        btnAniadir.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnInicio.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnPedidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnProductos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        //Carga de datos del producto
         cargarDatos();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

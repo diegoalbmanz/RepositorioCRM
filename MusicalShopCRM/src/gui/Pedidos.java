@@ -10,6 +10,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatUIUtils;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Image;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -43,59 +44,83 @@ public class Pedidos extends javax.swing.JDialog {
     /**
      * Creates new form Pedidos
      */
-    public Pedidos(java.awt.Frame parent, boolean modal,Empleado empleado){
+    public Pedidos(java.awt.Frame parent, boolean modal, Empleado empleado) {
+
+        //Llamada al constructor padre
         super(parent, modal);
+
+        //Inicialización de componentes
         initComponents();
-      this.empleado = empleado;
 
-     
-         //Título
-        setTitle("CRM Music Shop - Detalles producto");
+        //Asignación del empleado
+        this.empleado = empleado;
 
-        //Tamaño, redimensionamiento y centrado
-        setSize(1250, 800);  
-        setResizable(false);  
-        setLocationRelativeTo(null);
-        
-                FlatLightLaf.setup();   
-        UIManager.put("Panel.background", Color.WHITE); // fondo blanco
-        UIManager.put("Button.arc", 30); // redondeo solo para botones
-              
+        //Configuración de la ventana
+        setTitle("CRM Music Shop - Detalles producto"); //Título
+        setSize(1250, 800); //Tamaño
+        setResizable(false); //No redimensionable
+        setLocationRelativeTo(null); //Centrado en pantalla
 
+        //Configuración de FlatLaf
+        FlatLightLaf.setup();
+        UIManager.put("Panel.background", Color.WHITE); //Fondo blanco
+        UIManager.put("Button.arc", 30); //Redondeo solo para botones
+
+        //Color de fondo del contenedor principal
         getContentPane().setBackground(new Color(230, 230, 230));
 
-        
-        jPanel1.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-jPanel2.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        btnOtrasAcciones.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        jPanel4.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas   // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        
+        //Estilos de paneles y botones
+        jPanel1.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        jPanel2.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        btnOtrasAcciones.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        jPanel4.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        //Cursores personalizados
+        btnBorrarProducto.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnBuscarPedido.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnCancelarPedido.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnClienteNuevo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnCompletarPedido.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnInicio.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnOtrasAcciones.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnPedidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnProductos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        cmbClientes.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         //Icono de la ventana
-        Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
+        Image icon = new ImageIcon(
+            getClass().getResource("/img/iconoApp.png")
+        ).getImage();
         setIconImage(icon);
-        
- 
-        // Cargar datos
+
+        //Carga de datos
         configurarTabla();
         cargarComboClientes();
         cargarDatosCarrito();
-
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

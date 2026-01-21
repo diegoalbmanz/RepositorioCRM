@@ -5,6 +5,7 @@
 package gui;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -29,31 +30,38 @@ public class InicioSesion extends javax.swing.JFrame {
      * Creates new form InicioSesion
      */
     public InicioSesion() {
+
+        //Inicialización de componentes
         initComponents();
 
-        //Título
-        setTitle("CRM Music Shop - Inicio de Sesión");
-
-        //Tamaño, redimensionamiento y centrado
-        setSize(900, 600);  
-        setResizable(false);  
-        setLocationRelativeTo(null); 
+        //Configuración de la ventana
+        setTitle("CRM Music Shop - Inicio de Sesión"); //Título
+        setSize(900, 600); //Tamaño
+        setResizable(false); //No redimensionable
+        setLocationRelativeTo(null); //Centrado en pantalla
 
         //Icono de la ventana
-        Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
+        Image icon = new ImageIcon(
+            getClass().getResource("/img/iconoApp.png")
+        ).getImage();
         setIconImage(icon);
 
-        //Estilos de los campos
+        //Estilos del campo usuario
         txtUsuario.setBackground(Color.WHITE);
         txtUsuario.putClientProperty("JComponent.roundRect", true);
         txtUsuario.putClientProperty("JComponent.borderColor", Color.LIGHT_GRAY);
         txtUsuario.putClientProperty("JComponent.focusedBorderColor", Color.BLACK);
 
+        //Estilos del campo contraseña
         pwdPass.setBackground(Color.WHITE);
         pwdPass.putClientProperty("JComponent.roundRect", true);
         pwdPass.putClientProperty("JComponent.borderColor", Color.LIGHT_GRAY);
         pwdPass.putClientProperty("JComponent.focusedBorderColor", Color.BLACK);
+
+        //Cursor personalizado
+        btnInicio.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
+
 
 
     /**

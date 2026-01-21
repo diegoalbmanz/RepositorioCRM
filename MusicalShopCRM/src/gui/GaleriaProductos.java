@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -42,42 +43,54 @@ public class GaleriaProductos extends javax.swing.JDialog {
      * Creates new form GaleriaProductos
      */
     public GaleriaProductos(Empleado empleado) {
+
+        //Asignación del empleado
         this.empleado = empleado;
+
+        //Inicialización de componentes
         initComponents();
+
+        //Configuración de la ventana
+        setTitle("CRM Music Shop - Galería Principal"); //Título
+        setSize(1250, 800); //Tamaño
+        setResizable(false); //No redimensionable
+        setLocationRelativeTo(null); //Centrado en pantalla
         
-        //Título
-        setTitle("CRM Music Shop - Galería Principal");
-
-        //Tamaño, redimensionamiento y centrado
-        setSize(1250, 800);  
-        setResizable(false);  
-        setLocationRelativeTo(null);
-
-                        FlatLightLaf.setup();   
-        pnGaleria.setBackground(new Color(242, 242, 242)); // fondo gris
-        UIManager.put("Button.arc", 30); // redondeo solo para botones
-       
-
         //Icono de la ventana
-        Image icon = new ImageIcon(getClass().getResource("/img/iconoApp.png")).getImage();
+        Image icon = new ImageIcon(
+            getClass().getResource("/img/iconoApp.png")
+        ).getImage();
         setIconImage(icon);
-        
-                lblTitulo.putClientProperty(FlatClientProperties.STYLE, 
-    "arc: 20;" +                // Redondeo de esquinas
-    "background: #ffffff;" +    // Color de fondo específico
-    "border: 1,1,1,1, #cccccc, 1, 20" // Un borde sutil (opcional)
-);
-        
-        //Desactivamos el scroll horizontal
-        scrollProductos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollProductos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-        //Añadimos el layout personalizado para las cards
+        //Configuración de FlatLaf
+        FlatLightLaf.setup();
+        pnGaleria.setBackground(new Color(242, 242, 242)); //Fondo gris
+        UIManager.put("Button.arc", 30); //Redondeo solo para botones
+
+        //Estilo del título
+        lblTitulo.putClientProperty(
+            FlatClientProperties.STYLE,
+            "arc: 20;" +
+            "background: #ffffff;" +
+            "border: 1,1,1,1, #cccccc, 1, 20"
+        );
+
+        //Configuración del ScrollPane
+        scrollProductos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); //Desactiva scroll horizontal
+        scrollProductos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED); //Scroll vertical según necesidad
+
+        //Cursores personalizados
+        btnInicio.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnPedidos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnProductos.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        //Layout personalizado para las cards
         pnGaleria.setLayout(new WrapLayout(FlowLayout.CENTER, 20, 20));
-        
-        //Método para cargar las cards en el Scroll Pane
+
+        //Carga de las cards de productos
         cargarCardsProductos();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -254,6 +267,7 @@ public class GaleriaProductos extends javax.swing.JDialog {
         //Listener del botón
         JButton btnDetalles = new JButton("Ver detalles"); 
         btnDetalles.setBackground(new Color(153,204,255));
+        btnDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDetalles.addActionListener(e -> abrirDetallesProducto(p)); 
         
         //Distribución del panel

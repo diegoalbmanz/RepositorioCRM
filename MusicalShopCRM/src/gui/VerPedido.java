@@ -4,6 +4,7 @@
  */
 package gui;
 
+import java.awt.Cursor;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -23,18 +24,30 @@ public class VerPedido extends javax.swing.JDialog {
 
     //Modificamos el constructor para recibir el objeto Pedido
     public VerPedido(java.awt.Frame parent, boolean modal, Pedido pedido) {
+
+        //Llamada al constructor padre
         super(parent, modal);
+
+        //Asignación del pedido
         this.pedido = pedido;
+
+        //Inicialización de componentes
         initComponents();
-        
-        setTitle("Consulta de Pedido #" + pedido.getId());
-        //setSize(800, 500);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        
+
+        //Configuración de la ventana
+        setTitle("Consulta de Pedido #" + pedido.getId()); //Título
+        //setSize(800, 500); //Opcional: tamaño
+        setResizable(false); //No redimensionable
+        setLocationRelativeTo(null); //Centrado en pantalla
+
+        //Cursor personalizado
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        //Carga de datos y configuración de la tabla
         configurarTabla();
         cargarDatos();
     }
+
     
     private void configurarTabla() {
         tablaModelo = new DefaultTableModel();
@@ -55,7 +68,7 @@ public class VerPedido extends javax.swing.JDialog {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         lblFecha.setText("Fecha: " + pedido.getFecha().format(formatter));
         
-        lblTotal.setText(String.format("TOTAL: %.2f €", pedido.getPrecioTotal()));
+        lblTotal.setText(String.format("%.2f €", pedido.getPrecioTotal()));
 
         //Cargamos la tabla de productos
         tablaModelo.setRowCount(0);
